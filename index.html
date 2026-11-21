@@ -576,8 +576,36 @@
   .fav-frame{position:relative;width:min(340px,86vw);margin:0 auto;border-radius:22px;padding:10px;
     background:linear-gradient(165deg,#3a1530,#1c0f2a);border:2px solid var(--gold);box-shadow:0 24px 54px rgba(0,0,0,.6),0 0 44px rgba(231,84,128,.28)}
   .fav-frame video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;background:#000}
-  .fav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:min(520px,94vw);margin:18px auto 0}
-  .fav-grid img{display:block;width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:2px solid var(--gold);box-shadow:0 12px 28px rgba(0,0,0,.45)}
+  .fav-big-title{font-family:"Great Vibes",cursive;font-weight:400;font-size:2rem;color:var(--rose);margin:30px 0 4px}
+  .fav-big{display:grid;grid-template-columns:1fr;gap:16px;width:min(560px,94vw);margin:14px auto 0}
+  @media (min-width:640px){.fav-big{grid-template-columns:1fr 1fr}}
+  .fav-big button{padding:0;border:2px solid var(--gold);border-radius:20px;overflow:hidden;background:#1c0f2a;cursor:pointer;line-height:0;box-shadow:0 18px 38px rgba(0,0,0,.5)}
+  .fav-big img{display:block;width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .4s ease}
+  .fav-big button:hover img{transform:scale(1.04)}
+  /* ---------- the memory tree — the older photos hang as leaves ---------- */
+  .fav-tree-title{font-family:"Great Vibes",cursive;font-weight:400;font-size:2rem;color:var(--gold);margin:38px 0 2px}
+  .fav-tree-hint{color:var(--muted);font-size:.95rem;margin:0 0 6px}
+  .fav-tree{position:relative;width:min(560px,96vw);margin:10px auto 0;padding:26px 6px 0;border-radius:24px;
+    background:radial-gradient(ellipse 90% 62% at 50% 30%,rgba(64,110,52,.34),rgba(20,40,26,.14) 62%,transparent 78%)}
+  .tree-row{display:flex;justify-content:center;align-items:flex-start;gap:clamp(8px,2.6vw,18px);margin-bottom:2px}
+  .tree-photo{position:relative;padding:16px 0 0;border:none;background:none;cursor:pointer;line-height:0;min-height:0;
+    animation:leafSway 4.6s ease-in-out infinite}
+  .tree-photo::before{content:"";position:absolute;top:0;left:50%;width:2px;height:16px;transform:translateX(-50%);
+    background:linear-gradient(180deg,rgba(242,200,121,0),rgba(242,200,121,.85))}
+  .tree-photo::after{content:"🍃";position:absolute;top:9px;right:-4px;font-size:.72rem;line-height:1;transform:rotate(24deg)}
+  .tree-photo img{display:block;width:clamp(56px,15.5vw,84px);height:clamp(56px,15.5vw,84px);object-fit:cover;border-radius:50%;
+    border:2.5px solid var(--gold);box-shadow:0 10px 22px rgba(0,0,0,.5),0 0 0 4px rgba(64,110,52,.35);transition:transform .3s ease}
+  .tree-photo:hover img,.tree-photo:focus-visible img{transform:scale(1.14)}
+  .tree-row:nth-child(2) .tree-photo{animation-delay:.6s}
+  .tree-row:nth-child(3) .tree-photo{animation-delay:1.1s}
+  .tree-row:nth-child(4) .tree-photo{animation-delay:.3s}
+  .tree-row:nth-child(5) .tree-photo{animation-delay:.9s}
+  @keyframes leafSway{0%,100%{transform:rotate(-2.4deg)}50%{transform:rotate(2.4deg)}}
+  .tree-trunk{width:34px;height:74px;margin:8px auto 0;background:linear-gradient(90deg,#4a2c17,#7a4a26 45%,#54331a);
+    clip-path:polygon(38% 0,62% 0,88% 100%,12% 100%);border-radius:0 0 10px 10px}
+  .tree-ground{width:min(300px,70%);height:14px;margin:-2px auto 4px;border-radius:50%;
+    background:radial-gradient(ellipse at center,rgba(84,140,64,.55),transparent 70%)}
+  @media (prefers-reduced-motion:reduce){.tree-photo{animation:none}}
   .fav-heart{position:absolute;font-size:1.5rem;pointer-events:none;animation:heartFloat 3.4s ease-in-out infinite;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))}
   .fav-heart.h1{top:-14px;left:-10px}
   .fav-heart.h2{top:38%;right:-16px;animation-delay:.8s;font-size:1.2rem}
@@ -1115,26 +1143,48 @@
           <video id="favVideo" src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/favorite-one.mp4" poster="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/favorite-one-poster.jpg" playsinline loop controls preload="metadata" aria-label="A short clip of a smiling baby lying on a red patterned cloth, holding a finger and giggling"></video>
           <span class="fav-heart h1">💗</span><span class="fav-heart h2">✨</span><span class="fav-heart h3">🌹</span><span class="fav-heart h4">💖</span>
         </div>
-        <div class="fav-grid">
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-01.jpg" alt="Baby Aksa lying on a red patterned cloth, her tiny hands clasped together" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-02.jpg" alt="Baby Aksa — photo 2 of her little gallery" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-03.jpg" alt="Baby Aksa — photo 3 of her little gallery" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-04.jpg" alt="Baby Aksa — photo 4 of her little gallery" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-05.jpg" alt="Baby Aksa — photo 5 of her little gallery" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-06.jpg" alt="Baby Aksa — photo 6 of her little gallery" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-07.jpg" alt="Baby Aksa — photo 7 of her little gallery" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-08.jpg" alt="Baby Aksa — photo 8 of her little gallery" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-09.jpg" alt="Baby Aksa — photo 9 of her little gallery" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-10.jpg" alt="Baby Aksa held in loving arms, looking up with wide curious eyes" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-11.jpg" alt="Baby Aksa lying on a red patterned cloth beside her sibling" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-12.jpg" alt="Baby Aksa resting on a bright red floral pillow in a striped onesie" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-13.jpg" alt="Baby Aksa in her father's arms, her little tongue peeking out" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-14.jpg" alt="Baby Aksa sleeping peacefully, a close-up of her tiny face" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-15.jpg" alt="Baby Aksa in her father's arms, gazing at the camera" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-16.jpg" alt="Baby Aksa lying beside her father, smiling up at him" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-17.jpg" alt="Baby Aksa close to the camera with her father smiling behind her" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-18.jpg" alt="Baby Aksa laughing on a green floral bedsheet, pink bows on her tiny socks" loading="lazy" />
-          <img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-19.jpg" alt="Baby Aksa lying on a green floral bedsheet, calm and curious" loading="lazy" />
+        <h3 class="fav-big-title">Our newest little favorites 💗</h3>
+        <p class="fav-tree-hint">Kept big, just for you — tap any one to see it even bigger.</p>
+        <div class="fav-big">
+          <button type="button" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/fav-new-1.jpg" aria-label="Open this photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/fav-new-1.jpg" alt="A four-photo collage of baby Aksa smiling with her bunny and teddy bear — Little Princess" loading="lazy" /></button>
+          <button type="button" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/fav-new-2.jpg" aria-label="Open this photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/fav-new-2.jpg" alt="Baby Aksa sitting on a soft rug, hugging her teddy bear beside an Our Little Princess cushion" loading="lazy" /></button>
+          <button type="button" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/fav-new-3.jpg" aria-label="Open this photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/fav-new-3.jpg" alt="Baby Aksa sitting with a yellow rubber duck, her pink bunny and big teddy bear behind her" loading="lazy" /></button>
+          <button type="button" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/fav-new-4.jpg" aria-label="Open this photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/fav-new-4.jpg" alt="A little boy in a blue football jersey standing with arms folded, smiling under a Little Champion sign" loading="lazy" /></button>
+        </div>
+        <h3 class="fav-tree-title">Our little memory tree 🌳</h3>
+        <p class="fav-tree-hint">Every older favorite hangs here as a leaf — tap one to see it big. 🍃</p>
+        <div class="fav-tree" role="group" aria-label="A tree of baby Aksa's photos — tap a photo to see it big">
+          <div class="tree-row">
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-01.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-01.jpg" alt="Baby Aksa lying on a red patterned cloth, her tiny hands clasped together" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-02.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-02.jpg" alt="Baby Aksa — photo 2 of her little gallery" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-03.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-03.jpg" alt="Baby Aksa — photo 3 of her little gallery" loading="lazy" /></button>
+          </div>
+          <div class="tree-row">
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-04.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-04.jpg" alt="Baby Aksa — photo 4 of her little gallery" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-05.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-05.jpg" alt="Baby Aksa — photo 5 of her little gallery" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-06.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-06.jpg" alt="Baby Aksa — photo 6 of her little gallery" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-07.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-07.jpg" alt="Baby Aksa — photo 7 of her little gallery" loading="lazy" /></button>
+          </div>
+          <div class="tree-row">
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-08.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-08.jpg" alt="Baby Aksa — photo 8 of her little gallery" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-09.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-09.jpg" alt="Baby Aksa — photo 9 of her little gallery" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-10.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-10.jpg" alt="Baby Aksa held in loving arms, looking up with wide curious eyes" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-11.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-11.jpg" alt="Baby Aksa lying on a red patterned cloth beside her sibling" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-12.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-12.jpg" alt="Baby Aksa resting on a bright red floral pillow in a striped onesie" loading="lazy" /></button>
+          </div>
+          <div class="tree-row">
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-13.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-13.jpg" alt="Baby Aksa in her father's arms, her little tongue peeking out" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-14.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-14.jpg" alt="Baby Aksa sleeping peacefully, a close-up of her tiny face" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-15.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-15.jpg" alt="Baby Aksa in her father's arms, gazing at the camera" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-16.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-16.jpg" alt="Baby Aksa lying beside her father, smiling up at him" loading="lazy" /></button>
+          </div>
+          <div class="tree-row">
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-17.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-17.jpg" alt="Baby Aksa close to the camera with her father smiling behind her" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-18.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-18.jpg" alt="Baby Aksa laughing on a green floral bedsheet, pink bows on her tiny socks" loading="lazy" /></button>
+            <button type="button" class="tree-photo" data-full="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-19.jpg" aria-label="Open this tree photo large"><img src="https://zlccmcuvotfnyawolqac.supabase.co/storage/v1/object/public/media/anniversary-website/baby-19.jpg" alt="Baby Aksa lying on a green floral bedsheet, calm and curious" loading="lazy" /></button>
+          </div>
+          <div class="tree-trunk" aria-hidden="true"></div>
+          <div class="tree-ground" aria-hidden="true"></div>
         </div>
         <p class="fav-caption">There you are — <span class="script">my favorite one</span> 🥹<br/>That smile, those tiny fingers holding on so tight… the tiniest heartbeat of our whole story, found behind the very last door. 💗</p>
         <div class="fav-actions">
@@ -1538,8 +1588,8 @@ document.getElementById('secretDoor').addEventListener('click',openSecret);
 
 // ---------- lightbox ----------
 var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lightboxImg');
-document.querySelectorAll('#secretGrid button').forEach(function(b){
-  b.addEventListener('click',function(){lbImg.src=b.getAttribute('data-full');lb.classList.add('show');});});
+document.querySelectorAll('#secretGrid button, #favReveal [data-full]').forEach(function(b){
+  b.addEventListener('click',function(){lbImg.src=b.getAttribute('data-full');lbImg.alt=b.querySelector('img')?b.querySelector('img').alt:'The photo, enlarged';lb.classList.add('show');});});
 function closeLightbox(){lb.classList.remove('show');lbImg.removeAttribute('src');}
 document.getElementById('lightboxClose').addEventListener('click',closeLightbox);
 lb.addEventListener('click',function(e){if(e.target===lb)closeLightbox();});
